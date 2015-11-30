@@ -1,0 +1,33 @@
+<VirtualHost *:80>
+        ServerName axol.aml.com
+
+        WSGIDaemonProcess axol_service user=www-data group=www-data threads=2
+        WSGIScriptAlias / /opt/AXOL_Management/AXOL/axol_node/axol_service.wsgi
+
+        <Directory /opt/AXOL_Management/AXOL/axol_node>
+                WSGIProcessGroup axol_service
+                WSGIApplicationGroup %{GLOBAL}
+                Order deny,allow
+                Allow from all
+                Require all granted
+        </Directory>
+</VirtualHost>
+<VirtualHost *:443>
+		SSLEngine On
+    	SSLCertificateFile /opt/AXOL_Management/AXOL/axol_node/ssl/server_crt.pem
+    	SSLCertificateKeyFile /opt/AXOL_Management/AXOL/axol_node/ssl/server_key.pem
+
+        ServerName axol.aml.com
+
+        WSGIDaemonProcess axol_service_ssl user=www-data group=www-data threads=2
+        WSGIScriptAlias / /opt/AXOL_Management/AXOL/axol_node/axol_service.wsgi
+
+        <Directory /opt/AXOL_Management/AXOL/axol_node>
+                WSGIProcessGroup axol_service
+                WSGIApplicationGroup %{GLOBAL}
+                Order deny,allow
+                Allow from all
+                Require all granted
+        </Directory>
+</VirtualHost>
+

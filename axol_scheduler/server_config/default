@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+        ServerName scheduler.aml.com
+
+        WSGIDaemonProcess scheduler_service user=www-data group=www-data threads=5
+        WSGIScriptAlias / /opt/AXOL_Management/AXOL/axol_scheduler/scheduler_service.wsgi
+
+        <Directory /opt/AXOL_Management/AXOL/axol_scheduler>
+                WSGIProcessGroup scheduler_service
+                WSGIApplicationGroup %{GLOBAL}
+                Order deny,allow
+                Allow from all
+                Require all granted
+        </Directory>
+</VirtualHost>
+

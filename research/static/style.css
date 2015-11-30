@@ -1,0 +1,55 @@
+div {
+	padding: 2px;
+	background-color: #555;
+	border-radius: 10px;
+	margin: 10px;
+}
+
+li {
+	background-color: #888;
+	color: #fff;
+	margin: 10px;
+	float: left;
+	list-style-type: none;
+}
+
+ol {
+	background-color: #333;
+	color: #BBB;
+	margin: 10px;
+}
+
+.interface_type {
+	width: 40px;
+	background-color: #333;
+	color: #fff;
+	height: 15px;
+	font-size: 10px;
+	font-style: Verdana;
+	padding-left: 4px;
+	padding-right: 2px;
+	margin: 0px;
+	left: -10px;
+}
+
+#sub_interface_list {
+	background-color: #555;
+	left: -60px;
+	margin: 0px;
+	padding: 0px;
+	width: 106px;
+}
+
+.interface_list {
+	background-color: #777;
+	width: 252px;
+}
+
+#server_container {
+	margin: 10px;
+	height: auto;
+}
+
+#server_ip_ul {
+	
+}

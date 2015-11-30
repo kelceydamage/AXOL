@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% macro input(name, value='', type='text', size=60)  %}
+	<input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}" id="{{ id }}">
+{% endmacro %}
+<html lang="en">
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">	
+	{% block javascript %}
+    <script type="text/javascript">
+        {% include "utilities.js" %}
+    </script>
+	{% endblock %}
+	<script type="text/javascript">
+
+	document.addEventListener("DOMContentLoaded", function(){
+
+	updateRole(["cpu"], "submit", "role");
+    reload("cpu", "submit");
+	updateRole(["ram"], "submit2", "role2");
+    reload("ram", "submit2")
+
+	});
+	</script>
+	<title>Monitoring & Control</title>
+	{% if name %}
+  		<h1>Render Time: {{ name }}!</h1>
+	{% else %}
+  		<h1>Fail Hard!</h1>
+	{% endif %}
+</head>
+<body>
+	<div>
+		<ol>
+			<li>
+				<div>
+					Generate CPU stats: 
+					<input id="submit" type="submit" value="Click">
+					<input type="text" id="role" name="role" size="60">
+				</div>
+				<div id="cpu" data-source="http://54.201.119.11/api/cpu/"></div>
+				
+			</li>
+			<li>
+				<div>
+					Generate RAM stats:
+					<input id="submit2" type="submit" value="Click">
+					<input type="text" id="role2" name="role" size="60">
+				</div>
+				<div id="ram" data-source="http://54.201.119.11/api/memory/"></div>
+			</li>
+		</ol>	
+	</div>	
+	<div>
+		<ul>
+			<li>
+				<div id='server_container'>
+					<ul id='server_ip_ul'>
+					{% for server in roledefs %}
+						<li class='interface_list'>
+							{{ server }}
+							<ul>
+							{% for ip in roledefs[server] %}
+								<li  id='sub_interface_list'>
+									{% if ip == 'internal' or ip == 'external' %}										{{ roledefs[server][ip] }}
+										<ul>
+											<li class='interface_type'>
+												{{ ip }}
+											</li>
+										</ul>
+									{% else %}
+										{{ ip }}
+									{% endif %}
+								</li>
+							{% endfor %}
+							</ul>
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+			</li>	
+		</ul>
+	</div>
+</body>
+</html>

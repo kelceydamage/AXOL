@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	{% block javascript %}
+    <script type="text/javascript">
+    {% include "utilities.js" %}
+    </script>
+	{% endblock %}
+	<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(){
+		//func1();
+		//load();
+		reload('block2', 'button1');
+	});
+	</script>
+	</head>
+	<body>
+		<div id="block" class="block">
+			<div id="block2" class="block2" data-source="http://54.201.119.11/api/cpu/staging_web_servers"></div>
+			<button id="button1" class="button1">Click</button>
+		</div>
+	</body>
+</html>
