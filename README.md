@@ -30,7 +30,7 @@ Installation Guide
     * 3x EC2 micro instances - AXOL Node
     * 3x EC2 micro instances - RMQ Node
     * IPC: Elasticache Redis Micro - Option 1
-    * IPC: LMDB on RMQ nodes - Option 2
+    * IPC: LMDB on AXOL nodes - Option 2
   * Install Guide
     * Coming Soon
 
