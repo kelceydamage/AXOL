@@ -1,5 +1,6 @@
 AXOL Automation Platform
 ------------------------
+See LICENSE in this folder for usage information. Licensed under the Apache 2.0 license.
 
 Axol is a versatile task management platform designed to scale and handle millions of tasks.
 
