@@ -11,10 +11,28 @@ be created in a simple plugin. Examples would include:
 * Any pull stule request
 * Feedback loops, open and closed
 
-Installation
-------------
-* Comming Soon
+Installation Guide
+------------------
+* Development Setup
+** Minimum size: 
+*** EC2 micro instance - AXOL, RMQ, LMDB
+** Install Guide
+*** Comming Soon
 
+* Cluster Setup
+** Minimum size: 
+*** 2x EC2 micro instances - AXOL, RMQ, LMDB
+** Install Guide
+*** Comming Soon
+
+* High Performance Setup
+** Minimum size:
+*** 3x EC2 micro instances - AXOL Node
+*** 3x EC2 micro instances - RMQ Node
+*** IPC: Elasticache Redis Micro - Option 1
+*** IPC: LMDB on RMQ nodes - Option 2
+** Install Guide
+*** Coming Soon
 Plugin Creation Guide
 ---------------------
 * Coming Soon
