@@ -19,5 +19,17 @@ Plugin Creation Guide
 ---------------------
 * Coming Soon
 
+Core Components
+---------------
+* Celery
+* Flask
+* RabbitMQ
+* LMDB
 
-
+Optional Components
+-------------------
+* Elasticsearch
+* Cassandra
+* Elasticache
+* Amazon SQS
+* Amazon ELB
