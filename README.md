@@ -11,3 +11,13 @@ be created in a simple plugin. Examples would include:
 * Any pull stule request
 * Feedback loops, open and closed
 
+Installation
+------------
+* Comming Soon
+
+Plugin Creation Guide
+---------------------
+* Coming Soon
+
+
+
