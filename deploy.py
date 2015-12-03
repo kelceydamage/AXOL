@@ -78,11 +78,9 @@ class DeployTool(object):
 			outfile
 			)
 
-remote_server = '52.91.17.111'
-#remote_server = '52.91.18.197'
-#remote_server = '52.91.17.4'
-remote_user = 'palantir'
-remote_password = 'ao78b&*5'
+remote_server = '<remote-ip>'
+remote_user = 'deploy-user'
+remote_password = 'deploy-pass'
 folder_to_be_archived = 'axol_node'
 
 DT = DeployTool(
