@@ -14,9 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-'''
-axol_node = 'internal-axol-internal-160659483.us-west-2.elb.amazonaws.com'
-'''
-#axol_node = '10.100.10.34'
-axol_node = '172.31.194.171'
+
+axol_node = '127.0.0.1'
 

@@ -21,7 +21,7 @@ CELERY_APP="axol_core"
 
 # Where to chdir at start.
 
-CELERYD_CHDIR="/opt/AXOL_Management/AXOL/axol_node/"
+CELERYD_CHDIR="/opt/AXOL_Management/axol_node/"
 #CELERYD_CHDIR="/home/"
 
 # Extra command-line arguments to the worker

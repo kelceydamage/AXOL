@@ -16,7 +16,7 @@
 
 import sys
 
-sys.path.append("/opt/AXOL_Management/AXOL/axol_node")
+sys.path.append("/opt/AXOL_Management/axol_node")
 
 from axol_service import app as application
 

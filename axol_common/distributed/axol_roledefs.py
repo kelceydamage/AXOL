@@ -228,9 +228,9 @@ def generate_base_roles(application_flag='internal'):
 
 	return roledefs
 
-roledefs = generate_base_roles('internal')
+#roledefs = generate_base_roles('internal')
 #roledefs = generate_base_roles('external')
-
+roledefs = {'temp': ['','']}
 print roledefs
 
 

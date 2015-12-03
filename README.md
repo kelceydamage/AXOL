@@ -2,6 +2,8 @@ AXOL Automation Platform
 ------------------------
 See LICENSE in this folder for usage information. Licensed under the Apache 2.0 license.
 
+NOTE: Axol is currently being converted to run on CentOS 6.7. I am in the process of debugging the celery worker start, and writing a deployment script.
+
 Axol is a versatile task management platform designed to scale and handle millions of tasks.
 
 Out of the box there are a few plugins for common things, but the idea is that any task can 

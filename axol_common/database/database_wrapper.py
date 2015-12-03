@@ -53,7 +53,7 @@ class DatabaseWrapper(object):
 	def _init_lmdb(self):
 		print 'init db'
 		lmdb = Environment(
-			path='/opt/AXOL_Management/AXOL/axol_node/database',
+			path='/opt/AXOL_Management/axol_node/database',
 			map_size=256000000,
 			subdir=True,
 			map_async=True,

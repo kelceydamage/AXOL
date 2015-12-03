@@ -24,7 +24,7 @@ import time
 import sys
 import ssl
 import json
-from classes.processing import Processing
+from classes.Processing import Processing
 from multiprocessing import current_process
 from re import search
 from sys import getsizeof

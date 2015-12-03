@@ -17,7 +17,7 @@
 # Import main
 #-----------------------------------------------------------------------#
 import sys
-sys.path.append("/opt/AXOL_Management/AXOL")
+sys.path.append("/opt/AXOL_Management")
 from aapi.aapi import app as app
 
 # Import AXOL APIs (Registry)

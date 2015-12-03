@@ -17,7 +17,7 @@
 # Imports
 #-----------------------------------------------------------------------#
 import sys
-sys.path.append("/opt/AXOL_Management/AXOL/axol_common")
+sys.path.append("/opt/AXOL_Management/axol_common")
 from common_client import CommonClient
 from config.common_config import axol_node
 import urllib2

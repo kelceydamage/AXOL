@@ -28,7 +28,7 @@ from AxolTask import AxolTask
 from axol_config import backend
 from axol_config import broker
 from axol_config import cache
-from axol_config import node
+# from axol_config import node
 from axol_config import log_params
 from elasticsearch import Elasticsearch
 import json
@@ -236,8 +236,8 @@ TE.set_engine(celery)
 
 # Elasticsearch configuration
 #-----------------------------------------------------------------------#
-print 'CONFIGURING ELASTICSEARCH'
-ES = Elasticsearch(node)
+# print 'CONFIGURING ELASTICSEARCH'
+# ES = Elasticsearch(node)
 
 # Logger obj creation
 #-----------------------------------------------------------------------#

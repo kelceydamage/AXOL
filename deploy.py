@@ -6,8 +6,6 @@
 import os, subprocess
 from paramiko import SSHClient
 
-#folder_to_be_archived = '/home/mysql_backup_v2.py'
-
 class DeployTool(object):
 	"""docstring for ClassName"""
 	def __init__(self, remote_user, remote_password, remote_server):
@@ -23,31 +21,26 @@ class DeployTool(object):
 			)
 
 	def install_axol_node(self):
-		pass
+		print 'Configure base #####################'
+		self._ssh(
+			'sudo yum -y install gcc centos-release-SCL; \
+			sudo yum -y install python27 perl dos2unix; \
+			sudo echo "yum -y install python-setuptools"|scl enable python27 -; \
+			sudo echo "easy_install pip"| scl enable python27 -; \
+			sudo source /opt/rh/python27/enable; \
+			sudo pip install celery lmdb fabric boto awscli redis elasticsearch cassandra-driver'
+			)
 
-	def install_axol_scheduler(self, infile):
-
-		print 'CREATING DIRECTORIES ###############'
-		self._ssh('sudo mkdir /opt/AXOL_Management')
-		print 'INSTALLING PACKAGES ################'
-		self._ssh('sudo apt-get install python-pip -y')
-		self._ssh('sudo aptitude install libapache2-mod-wsgi')
-
-		print 'INSTALLING PYTHON PACKAGES #########'
-		self._ssh('sudo pip install boto fabric flask')
-		print 'COMPLETING INSTALLATION ############'
-		self._ssh('sudo apt-get update')
-
-		self.deploy(infile)
-
-		print 'INSTALLING CONFIG FILES ############'
-		self._ssh('service apaceh2 stop')
-		self._ssh('sudo rm -f /etc/apache2/sites-available/default')
-		self._ssh('sudo cp /opt/AXOL_Management/AXOL/axol_scheduler/server_config/default /etc/apache2/sites-available/default')
-		self._ssh('service apache2 start')
+	def configure_axol_node(self):
+		print 'Configure axol #####################'
+		self._ssh(
+			'cd /opt/AXOL_Management/axol_node/server_config; \
+			sudo cp default /etc/httpd/conf.d/; \
+			sudo cp celeryd.sh /etc/init.d/celeryd'
+			)
 
 	def deploy(self, infile):
-		command = 'tar.exe -zcvf pfmon.tar %s' % infile
+		command = 'tar -zcvf pfmon.tar %s' % infile
 		subprocess.Popen(
 			command,
 			shell=True
@@ -60,12 +53,15 @@ class DeployTool(object):
 			)
 
 		print 'SSH To Remote ######################'
-		self._ssh(
-			'sudo cp /home/%s/pfmon.tar /opt/AXOL_Management/pfmon.tar; \
+		o, e = self._ssh(
+			'sudo mkdir /opt/AXOL_Management; \
+			sudo cp /home/%s/pfmon.tar /opt/AXOL_Management/pfmon.tar; \
 			cd /opt/AXOL_Management/; \
 			sudo tar -zxvf /opt/AXOL_Management/pfmon.tar; \
-			sudo rm -f /pfmon.tar;' % self.remote_user
+			sudo rm -f /pfmon.tar; \
+			sudo find ./ -type f -exec dos2unix {} \;' % self.remote_user
 			)
+		print e
 
 
 	def _ssh(self, command):
@@ -85,7 +81,7 @@ class DeployTool(object):
 remote_server = '52.91.17.111'
 #remote_server = '52.91.18.197'
 #remote_server = '52.91.17.4'
-remote_user = 'root'
+remote_user = 'palantir'
 remote_password = 'ao78b&*5'
 folder_to_be_archived = 'axol_node'
 
@@ -95,22 +91,8 @@ DT = DeployTool(
 	remote_server
 	)
 
-#DT.install_axol_scheduler()
+DT.install_axol_node()
+DT.deploy('axol_node')
+DT.deploy('axol_common')
+DT.configure_axol_node()
 
-output = DT.deploy(folder_to_be_archived)
-
-remote_server = '50.112.162.211'
-folder_to_be_archived = 'AXOL/axol_scheduler'
-
-DT = DeployTool(
-	remote_user,
-	remote_password,
-	remote_server
-	)
-
-DT.deploy(folder_to_be_archived)
-'''
-output = DT.deploy(folder_to_be_archived)
-'''
-
-#print output

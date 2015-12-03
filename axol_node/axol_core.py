@@ -18,8 +18,8 @@
 #-----------------------------------------------------------------------#
 
 import sys
-sys.path.append("/opt/AXOL_Management/AXOL")
-sys.path.append("/opt/AXOL_Management/AXOL/axol_node")
+sys.path.append("/opt/AXOL_Management")
+sys.path.append("/opt/AXOL_Management/axol_node")
 from celery.app.registry import TaskRegistry
 from celery.utils.log import get_task_logger
 from task_engine.TaskEngine import celery, TE
